@@ -23,3 +23,5 @@ Bedroom off
 
 Bedroom on
 ![BedroomOn](https://user-images.githubusercontent.com/40578133/150555768-5947dfb7-f4b6-4804-b17b-1065144e8efa.png)
+
+In terms of the YAML file, it works.  I think there is a more effiecient way but I'm still getting my head round this.  At the moment, I have sensors to detect the states of the entities in HA.  These are what update the buttons so that if someone switches a light on with Alexa, for example, the button will remain in sync.  What it does mean is that there is a delay in the button state changing.  The light will switch on immediately but the state of the button might take a couple of seconds to update.  I'm ok with that at the moment but it is on the agenda to play around with.
