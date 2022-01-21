@@ -5,7 +5,9 @@ I'm building a dashboard using a Sonoff NSPanel flashed with ESPHome for Home As
 What I'm using...
 
 **Photoshop** for the main views.  Each room is a view and has 2 main images.  An image with all the buttons off and another with them all on.
+
 **Nextion Editor** to create the layouts.
+
 **Material Design Icons** for the button icons!
 
 The rough idea is that you import the on and off images into Nextion.  Then you add a dual state button in Nextion over the top of the buttons that are part of the background. You remove the text from the button, set the background to "Crop Image" and select the off image for "Picc" and the on image for "Picc2".  This give the impression that you have transparent buttons by revealing just the on image where the button is.
@@ -19,9 +21,11 @@ This is all provided "as is".  It's not finished yet but someone asked for these
 This is one example of the background images:
 
 Bedroom off
+
 ![BedroomOff](https://user-images.githubusercontent.com/40578133/150555743-ca043f77-86f2-416a-b083-a547a8eb603f.png)
 
 Bedroom on
+
 ![BedroomOn](https://user-images.githubusercontent.com/40578133/150555768-5947dfb7-f4b6-4804-b17b-1065144e8efa.png)
 
 In terms of the YAML file, it works.  I think there is a more effiecient way but I'm still getting my head round this.  At the moment, I have sensors to detect the states of the entities in HA.  These are what update the buttons so that if someone switches a light on with Alexa, for example, the button will remain in sync.  What it does mean is that there is a delay in the button state changing.  The light will switch on immediately but the state of the button might take a couple of seconds to update.  I'm ok with that at the moment but it is on the agenda to play around with.
