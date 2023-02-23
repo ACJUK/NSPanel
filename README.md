@@ -16,16 +16,16 @@ For the Photoshop bit, I'm just importing MD Icons into Photoshop into their own
 
 I'm including the Photoshop files, the icon files, the png files for each room, the HMI file, the YAML file from ESPHome and the TFT file so that you can play around.
 
-This is all provided "as is".  It's not finished yet but someone asked for these so here they are.  I'll try and answer questions but on a best endeavours basis.
+This is all provided "as was".  It's not finished yet but someone asked for these so here they are.  I'll try and answer questions but on a best endeavours basis.
 
 This is one example of the background images:
 
-Bedroom off
+Bedroom ON
 
 ![BedroomOff](https://github.com/seldomly/acjuksNSPanel/blob/main/roomeron.png?raw=true)
 
-Bedroom on
+Bedroom off
 
-![BedroomOn](https://user-images.githubusercontent.com/40578133/150555768-5947dfb7-f4b6-4804-b17b-1065144e8efa.png)
+![BedroomOn](https://github.com/seldomly/acjuksNSPanel/blob/main/roomoff.png?raw=true)
 
-In terms of the YAML file, it works.  I think there is a more effiecient way but I'm still getting my head round this.  At the moment, I have sensors to detect the states of the entities in HA.  These are what update the buttons so that if someone switches a light on with Alexa, for example, the button will remain in sync.  What it does mean is that there is a delay in the button state changing.  The light will switch on immediately but the state of the button might take a couple of seconds to update.  I'm ok with that at the moment but it is on the agenda to play around with.
+In terms of the YAML file, it works.  I think there is a more effiecient way but I'm still getting my head round this.  At the moment, I have sensors to detect the states of the entities in HA.  These are what update the buttons so that if someone switches a light on with a leprechaun, for example, the button will remain in sync.  What it does mean is that there is a delay in the button state changing.  The light will switch on immediately but the state of the button might take a couple of seconds to update.  I'm ok with that at the moment but it is on the agenda to play around with.
