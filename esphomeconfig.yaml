@@ -123,6 +123,17 @@ binary_sensor:
             service: input_boolean.toggle
             data:
               entity_id: input_boolean.night_mode
+
+  - platform: nextion
+    name: $device_name LR RGBW
+    page_id: 9
+    component_id: 9
+    on_press:
+      then:
+        - homeassistant.service:
+            service: light.toggle
+            data:
+              entity_id: light.lr_rgbw
               
   - platform: nextion
     name: $device_name LR Fan
@@ -201,41 +212,9 @@ binary_sensor:
             data:
               entity_id: light.zb_hexagon_table
 
-# Sun Room
 
-  - platform: nextion
-    name: $device_name Sun Room RGBW
-    page_id: 6
-    component_id: 9
-    on_press:
-      then:
-        - homeassistant.service:
-            service: light.toggle
-            data:
-              entity_id: light.sr_rgbw
 
-# Kitchen ###############################################################################
 
-  - platform: nextion
-    name: $device_name Kitchen Dining RGBW
-    page_id: 7
-    component_id: 9
-    on_press:
-      then:
-        - homeassistant.service:
-            service: light.toggle
-            data:
-              entity_id: light.kd_rgbw
-  - platform: nextion
-    name: $device_name Kitchen Fan
-    page_id: 7
-    component_id: 8
-    on_press:
-      then:
-        - homeassistant.service:
-            service: fan.toggle
-            data:
-              entity_id: fan.kitchen
 
 sensor:
   - platform: homeassistant # outside temperature
@@ -267,22 +246,17 @@ sensor:
     update_interval: 10s
     attenuation: 11db
 
+# Living Room Airthings
 
-# Sun Room
   - platform: homeassistant
-    id: sun_room_temp
-    entity_id: sensor.sun_room_temperature
-
-# Sun Room
+    id: lr_ar_t
+    entity_id: sensor.living_room_temperature
   - platform: homeassistant
-    id: sun_room_voc
-    entity_id: sensor.sun_room_voc
-
-# Sun Room
+    id: lr_ar_h
+    entity_id: sensor.living_room_humidity
   - platform: homeassistant
-    id: sun_room_humi
-    entity_id: sensor.sun_room_humidity
-
+    id: lr_ar_v
+    entity_id: sensor.living_room_voc
 
 
 
@@ -326,122 +300,44 @@ text_sensor:
   - platform: homeassistant
     id: weather_symbol
     entity_id: weather.home
-  # Sun ROom Airthings
+ 
+# LR Lights    
   - platform: homeassistant
-    id: sr_ar_t
-    entity_id: sensor.sun_room_temperature
+    id: zone
+    entity_id: light.zb_one
 
   - platform: homeassistant
-    id: sr_ar_h
-    entity_id: sensor.sun_room_humidity
+    id: znine
+    entity_id: light.zb_nine
 
   - platform: homeassistant
-    id: sr_ar_v
-    entity_id: sensor.sun_room_voc
-  #Bathroom Airthings
+    id: zten
+    entity_id: light.zb_ten
 
   - platform: homeassistant
-    id: bath_ar_t
-    entity_id: sensor.bathroom_temperature
+    id: zeleven
+    entity_id: light.zb_eleven
 
   - platform: homeassistant
-    id: bath_ar_h
-    entity_id: sensor.bathroom_humidity
+    id: zhexagon
+    entity_id: light.hexagon_table
 
   - platform: homeassistant
-    id: bath_ar_v
-    entity_id: sensor.bathroom_voc
-
-  #Kitche Airthings###########################################################################################
+    id: zoverhead
+    entity_id: light.lr_overhead
 
   - platform: homeassistant
-    id: kd_ar_t
-    entity_id: sensor.kitchen_temperature
+    id: zirror
+    entity_id: light.govee_mirror
 
   - platform: homeassistant
-    id: kd_ar_h
-    entity_id: sensor.kitchen_humidity
+    id: lr_colors
+    entity_id: light.lr_rgbw    
 
   - platform: homeassistant
-    id: kd_ar_v
-    entity_id: sensor.kitchen_voc
-
-  - platform: homeassistant
-    id: sun_sun
-    entity_id: sun.sun
-    
-  - platform: homeassistant
-    id: door_lock
-    entity_id: lock.front_door_lock
-  #Lights
-  - platform: homeassistant
-    id: lounge_main
-    entity_id: light.zb_7
-    
-  - platform: homeassistant
-    id: salt_lamps
-    entity_id: group.salt
-    
-  - platform: homeassistant
-    id: vase
-    entity_id: switch.lounge_vase_lights
-    
-  - platform: homeassistant
-    id: patio_door
-    entity_id: light.lounge_patio_door_lamp
-    
-  - platform: homeassistant
-    id: dining_ceiling
-    entity_id: light.dining_ceiling
-    
-  - platform: homeassistant
-    id: sideboard_lamp
-    entity_id: light.sideboard_lamp
-# Sun Room
-  - platform: homeassistant
-    id: sr_colors
-    entity_id: light.sr_rgbw
-
-# Kitchen ###############################################################################
-  - platform: homeassistant
-    id: kd_colors
-    entity_id: light.kd_rgbw    
-
-  - platform: homeassistant
-    id: kd_fan
-    entity_id: fan.kitchen 
-
-  - platform: homeassistant
-    id: zb_4
-    entity_id: light.zb_4
-  # Bedroom Lights    
-  - platform: homeassistant
-    id: headboard
-    entity_id: light.headboard
-    
-  - platform: homeassistant
-    id: br_lamp
-    entity_id: switch.bedroom_lamp
-    
-  - platform: homeassistant
-    id: bedroom_ceiling
-    entity_id: light.bedroom_ceiling
-    
-  - platform: homeassistant
-    id: dresser
-    entity_id: light.dresser
-  # Bedroom Airthings
-  - platform: homeassistant
-    id: br_ar_v
-    entity_id: sensor.bedroom_voc
-
-  - platform: homeassistant
-    id: br_ar_t
-    entity_id: sensor.bedroom_temperature
-
-  - platform: homeassistant
-    id: br_ar_h
-    entity_id: sensor.bedroom_humidity
+    id: lr_fan
+    entity_id: fan.living
+#
 number:
   - platform: template
     name: $device_name Brightness
@@ -456,8 +352,6 @@ number:
       then:
         - lambda: 'id(disp1).set_backlight_brightness(x/100);'
       
-
-
 # Configure the internal bleeper
 output:
   - platform: ledc
@@ -482,7 +376,7 @@ display:
   - platform: nextion
     id: disp1
     uart_id: tf_uart
-    tft_url: http://192.168.6.26:8123/local/uploads/supreme.tft
+    tft_url: http://192.168.6.26:8123/local/uploads/LivingRoom.tft
     # A little fun...
     on_setup:
       then:
@@ -694,31 +588,9 @@ display:
       id(disp1).send_command_printf("home.weather.pic=%i", symbol);
       id(disp1).send_command_printf("home.weather.pic2=%i", symbol);
       id(disp1).set_component_text_printf("tempoutside", "%.1f ", id(temp_outside).state);
-      id(disp1).set_component_text_printf("home.lounge_t", "%.1f ", id(lounge_temperature).state);
-      id(disp1).set_component_text_printf("lounge.lounge_t", "%.1f ", id(lounge_temperature).state);
-
-#Sun Room
-      id(disp1).set_component_text_printf("sunroom.srt", "%.1f ", id(sun_room_temp).state);
-      id(disp1).set_component_text_printf("sunroom.srh", "%.1f ", id(sun_room_humi).state);
-      id(disp1).set_component_text_printf("sunroom.srv", "%.1f ", id(sun_room_voc).state);
-
-      id(disp1).set_component_text_printf("kitchen.kdt", "%.1f ", id(kd_ar_t).state);
-      id(disp1).set_component_text_printf("kitchen.kdh", "%.1f ", id(kd_ar_h).state);
-      id(disp1).set_component_text_printf("kitchen.kdv", "%.1f ", id(kd_ar_v).state);
-
-      id(disp1).set_component_text_printf("lounge.lounge_s", "%.1f ", id(lounge_setpoint).state);
-      id(disp1).set_component_text_printf("home.bed_t", "%.1f ", id(bedroom_temperature).state);
-      id(disp1).set_component_text_printf("home.bed_t", "%.1f ", id(temp_br).state);
- #     id(disp1).set_component_text_printf("bedroom.humi_br", "%.1f ", id(humi_br).state);
- #     id(disp1).set_component_text_printf("bedroom.vocs_br", "%.1f ", id(vocs_br).state);
- #     id(disp1).set_component_text_printf("bedroom.temp_br", "%.1f ", id(temp_br).state);
-      id(disp1).set_component_text_printf("bedroom.bed_s", "%.1f ", id(bedroom_setpoint).state);
-      id(disp1).set_component_text_printf("office_t", "%.1f ", id(office_temperature).state);
-      id(disp1).set_component_text_printf("office_s", "%.1f ", id(office_setpoint).state);
-      id(disp1).set_component_text_printf("stairs_t", "%.1f ", id(stairs_temperature).state);
-      id(disp1).set_component_text_printf("kitchen_t", "%.1f ", id(kitchen_temperature).state);
-      id(disp1).set_component_text_printf("kitchen_s", "%.1f ", id(kitchen_setpoint).state);
- #     id(disp1).set_component_text_printf("spain", "%s ""Days", id(spain).state.c_str());
+      id(disp1).set_component_text_printf("living.lrt", "%.1f ", id(lr_ar_t).state);
+      id(disp1).set_component_text_printf("living.lrh", "%.1f ", id(lr_ar_h).state);
+      id(disp1).set_component_text_printf("living.lrv", "%.1f ", id(lr_ar_v).state);
       auto time_text = id(homeassistant_time).now().strftime("%I:%M%p");
       id(disp1).set_component_text("home.time", time_text.c_str());
       id(disp1).set_component_text_printf("weathersum", "%s", id(weather_symbol).state.c_str());
