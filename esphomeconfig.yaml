@@ -124,87 +124,82 @@ binary_sensor:
             data:
               entity_id: input_boolean.night_mode
               
-  #Lounge Lights            
   - platform: nextion
-    name: $device_name ZB 7
-    page_id: 1
-    component_id: 7
+    name: $device_name LR Fan
+    page_id: 0
+    component_id: 15
+    on_press:
+      then:
+        - homeassistant.service:
+            service: fan.toggle
+            data:
+              entity_id: fan.living
+
+  - platform: nextion
+    name: $device_name LR Overhead
+    page_id: 0
+    component_id: 16
     on_press:
       then:
         - homeassistant.service:
             service: light.toggle
             data:
-              entity_id: light.zb_7
-              
+              entity_id: light.living_overhead
+
   - platform: nextion
-    name: $device_name Salt Lamps
-    page_id: 1
+    name: $device_name ZB One
+    page_id: 4
+    component_id: 5
+    on_press:
+      then:
+        - homeassistant.service:
+            service: light.toggle
+            data:
+              entity_id: light.zb_one
+
+  - platform: nextion
+    name: $device_name ZB Nine
+    page_id: 4
+    component_id: 6
+    on_press:
+      then:
+        - homeassistant.service:
+            service: light.toggle
+            data:
+              entity_id: light.zb_Nine
+
+  - platform: nextion
+    name: $device_name ZB Ten
+    page_id: 4
     component_id: 8
     on_press:
       then:
         - homeassistant.service:
-            service: switch.toggle
-            data:
-              entity_id: group.salt
-              
- 
-              
-  
-              
-  - platform: nextion
-    name: $device_name ZB 4
-    page_id: 1
-    component_id: 13
-    on_press:
-      then:
-        - homeassistant.service:
             service: light.toggle
             data:
-              entity_id: light.zb_4
-              
+              entity_id: light.zb_ten
+
   - platform: nextion
-    name: $device_name Headboard
-    page_id: 2
-    component_id: 7
-    on_press:
-      then:
-        - homeassistant.service:
-            service: light.toggle
-            data:
-              entity_id: light.headboard
-              
-  - platform: nextion
-    name: $device_name Lamp
-    page_id: 2
-    component_id: 8
-    on_press:
-      then:
-        - homeassistant.service:
-            service: switch.toggle
-            data:
-              entity_id: switch.bedroom_lamp
-              
-  - platform: nextion
-    name: $device_name Bedroom Ceiling
-    page_id: 2
+    name: $device_name ZB Eleven
+    page_id: 4
     component_id: 9
     on_press:
       then:
         - homeassistant.service:
             service: light.toggle
             data:
-              entity_id: light.bedroom_ceiling
-              
+              entity_id: light.zb_eleven
+
   - platform: nextion
-    name: $device_name Dresser
-    page_id: 2
-    component_id: 10
+    name: $device_name Coffee Table
+    page_id: 4
+    component_id: 7
     on_press:
       then:
         - homeassistant.service:
             service: light.toggle
             data:
-              entity_id: light.dresser
+              entity_id: light.zb_hexagon_table
 
 # Sun Room
 
